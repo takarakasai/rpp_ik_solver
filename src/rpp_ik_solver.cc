@@ -23,7 +23,7 @@ namespace Dp {
     l2_ = l2;
     l3_ = l3;
 
-    for (size_t i = 0; i < 3; I++) {
+    for (size_t i = 0; i < 3; i++) {
       offset_[i] = offset[i];
     }
 
@@ -36,9 +36,9 @@ namespace Dp {
   
   bool RppIKSolver::Solve(double x, double y, double z) {
 
-    x -= offset[0];
-    y -= offset[1];
-    z -= offset[2];
+    x -= offset_[0];
+    y -= offset_[1];
+    z -= offset_[2];
 
     solutions_.clear();
   

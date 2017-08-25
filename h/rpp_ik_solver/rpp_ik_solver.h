@@ -9,7 +9,7 @@ namespace Dp {
   
   class RppIKSolver {
   public:
-    RppIKSolver(double l1, double l2, double l3);
+    RppIKSolver(double l1, double l2, double l3, double offset[3] = (double[3]){0.0, 0.0, 0.0});
     virtual ~RppIKSolver();
   
     bool Solve(double x, double y, double z);
