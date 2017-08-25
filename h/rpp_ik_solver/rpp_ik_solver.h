@@ -23,6 +23,8 @@ namespace Dp {
     double l1_; /* roll    --> pitch#1 */
     double l2_; /* pitch#1 --> pitch#2 */
     double l3_; /* pitch#2 --> EE      */
+
+    double offset_[3];
   };
 
 }

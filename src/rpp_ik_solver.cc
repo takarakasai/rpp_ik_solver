@@ -14,23 +14,32 @@ namespace Dp {
 
   const double RppIKSolver::kDeltaRadian = D2R(0.0001);
 
-  RppIKSolver::RppIKSolver(double l1, double l2, double l3) {
+  RppIKSolver::RppIKSolver(double l1, double l2, double l3, double offset[3]) {
+
+    solutions_.reserve(2);
+    solutions_.clear();
   
     l1_ = l1;
     l2_ = l2;
     l3_ = l3;
-  
-    solutions_.reserve(2);
-    solutions_.clear();
-  
+
+    for (size_t i = 0; i < 3; I++) {
+      offset_[i] = offset[i];
+    }
+
     return;
   }
-  
+
   RppIKSolver::~RppIKSolver() {
     return;
   }
   
   bool RppIKSolver::Solve(double x, double y, double z) {
+
+    x -= offset[0];
+    y -= offset[1];
+    z -= offset[2];
+
     solutions_.clear();
   
     double roll = atan2(y, -z);
@@ -42,7 +51,7 @@ namespace Dp {
     if (r_xyz > r_reachable) {
       return false;
     }
-  
+
     double r_yz_2  = pow(y, 2) + pow(z, 2);
     double r_yz    = sqrt(r_yz_2);
   
